@@ -1,10 +1,23 @@
 const express = require("express");
-const app = express();
+const { Pool } = require('pg');
 
-app.get("/", (req, res) => {
-  res.send("Backend is running!");
-});
+function main() {
+  const app = express();
+  const Database = require("./Database");
 
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
-});
+  const database = new Database();
+  
+  app.post("/register", (req, res) => {
+    print(req, res);
+  });
+
+  app.post("/login", (req, res) => {
+    print(req, res);
+  })
+
+  app.listen(5000, () => {
+    console.log("Server is running on port 5000");
+  });
+}
+
+main();
